@@ -1,0 +1,166 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --font-syne: 'Poppins', sans-serif;
+  --font-inter: 'Inter', sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+  --blue: #2359A4;
+  --blue-dark: #1A3F7A;
+  --blue-light: #4A7FD6;
+  --blue-pale: #F0F5FF;
+  --orange: #F58A1F;
+  --orange-light: #FF9F3A;
+  --orange-dark: #D97A15;
+  --dark: #0D0F1A;
+  --dark-navy: #0D1B3E;
+  --text: #2A2B2A;
+  --bg-light: #F8FAFF;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--font-inter);
+  background: var(--dark);
+  color: white;
+  overflow-x: hidden;
+}
+
+a, button { cursor: pointer; }
+
+/* ── Noise texture overlay ── */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 9998;
+  opacity: 0.03;
+}
+
+/* ── Gradient text utilities ── */
+.text-grad-orange {
+  background: linear-gradient(135deg, #F58A1F, #FF6B35);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.text-grad-blue {
+  background: linear-gradient(135deg, #2359A4, #4A7FD6);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.text-grad-purple {
+  background: linear-gradient(135deg, #6366F1, #A855F7);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ── Section base ── */
+.section-dark { background: var(--dark); }
+.section-navy { background: var(--dark-navy); }
+.section-light { background: var(--bg-light); }
+
+/* ── Glass card ── */
+.glass-card {
+  background: rgba(255,255,255,0.04);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 16px;
+}
+
+/* ── Orange glow border on hover ── */
+.card-hover {
+  transition: all 0.35s ease;
+}
+.card-hover:hover {
+  transform: translateY(-6px) scale(1.01);
+  box-shadow: 0 0 0 1px rgba(245,138,31,0.35), 0 20px 60px rgba(0,0,0,0.3);
+}
+
+/* ── Custom scrollbar ── */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--dark); }
+::-webkit-scrollbar-thumb { background: var(--blue); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: var(--orange); }
+
+/* ── Lenis smooth scroll ── */
+html.lenis { height: auto; }
+.lenis.lenis-smooth { scroll-behavior: auto; }
+.lenis.lenis-smooth [data-lenis-prevent] { overscroll-behavior: contain; }
+.lenis.lenis-stopped { overflow: hidden; }
+.lenis.lenis-scrolling iframe { pointer-events: none; }
+
+/* ── Animations ── */
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-18px); }
+}
+@keyframes pulse-ring {
+  0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(245,138,31,0.5); }
+  70% { transform: scale(1); box-shadow: 0 0 0 12px rgba(245,138,31,0); }
+  100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(245,138,31,0); }
+}
+@keyframes gradient-shift {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+@keyframes scroll-left {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+@keyframes dash-flow {
+  to { stroke-dashoffset: -100; }
+}
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(40px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes counter-up {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes spin-slow {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+@keyframes orbit {
+  0%   { transform: rotate(0deg)   translateX(120px) rotate(0deg); }
+  100% { transform: rotate(360deg) translateX(120px) rotate(-360deg); }
+}
+
+.animate-float { animation: float 6s ease-in-out infinite; }
+.animate-float-d1 { animation: float 6s ease-in-out 1.5s infinite; }
+.animate-float-d2 { animation: float 6s ease-in-out 3s infinite; }
+.animate-pulse-ring { animation: pulse-ring 2s ease-in-out infinite; }
+.animate-scroll-left { animation: scroll-left 40s linear infinite; }
+.animate-spin-slow { animation: spin-slow 20s linear infinite; }
+.animate-gradient { background-size: 200% 200%; animation: gradient-shift 4s ease infinite; }
+
+/* ── Syne font utility ── */
+.font-syne { font-family: var(--font-syne); }
+.font-mono-brand { font-family: var(--font-mono); }
+
+/* ── LMS badge glow ── */
+.lms-glow {
+  box-shadow: 0 0 12px rgba(245,138,31,0.6), 0 0 24px rgba(245,138,31,0.2);
+  animation: pulse-ring 2.5s ease-in-out infinite;
+}
+
+/* ── SVG line animation ── */
+.svg-dash {
+  stroke-dasharray: 8 6;
+  animation: dash-flow 2s linear infinite;
+}
+
+/* ── Testimonial scroll pause on hover ── */
+.testimonial-track:hover { animation-play-state: paused; }

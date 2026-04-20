@@ -1,0 +1,31 @@
+{
+  "company": {
+    "name": "Global Niryat",
+    "tagline": "Exporting Products & Services Globally",
+    "description": "Technology-driven import-export solutions, AI-powered software, and enterprise-ready LMS platforms — all under one global roof."
+  },
+  "contact": {
+    "email": "globalniryatbusiness@gmail.com",
+    "phone": "+918530084845",
+    "address": "India · Global Operations"
+  },
+  "whatsapp": {
+    "number": "918530084845",
+    "message": "Hello! I visited your website and would like to know more about your services."
+  },
+  "social": {
+    "instagram": "https://www.instagram.com/globalniryatbusiness?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==",
+    "linkedin": "https://linkedin.com/company/globalniryat",
+    "twitter": "https://twitter.com/globalniryat",
+    "github": ""
+  },
+  "logo": {
+    "path": "/logo.png",
+    "alt": "Global Niryat — Connecting India to the World",
+    "width": 120,
+    "height": 64
+  },
+  "footer": {
+    "copyrightYear": 2026
+  }
+}
